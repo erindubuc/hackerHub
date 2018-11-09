@@ -57,12 +57,10 @@ router.post('/register', (req, res) => {
 							.save()
 							.then(user => res.json(user))
 							.catch(err => console.log(err));
-					})
-				}) 
+					});
+				});
 			}
-		})
-		.catch();
-
+		});
 });
 
 // @route	GET api/users/login
@@ -92,7 +90,6 @@ router.post('/login', (req, res) => {
 				.then(isMatch => {
 					if(isMatch) {
 						// User Matched
-						
 						const payload = { id: user.id, name: user.name, avatar: user.avatar } //Create JWT Payload
 						
 						// Sign Token
@@ -105,7 +102,8 @@ router.post('/login', (req, res) => {
 								success: true,
 								token: 'Bearer ' + token
 								});
-							});
+							}
+						);
 					} else {
 						errors.password = 'Password incorrect';
 						return res.status(400).json(errors);
@@ -117,12 +115,16 @@ router.post('/login', (req, res) => {
 // @route	GET api/users/current
 // @desc	Return current user 
 // @access	Private (protected route)
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
-	res.json({
-		id: req.user.id,
-		name: req.user.name,
-		email: req.user.email
-	});
-});
+router.get(
+	'/current', 
+	passport.authenticate('jwt', { session: false }), 
+	(req, res) => {
+		res.json({
+			id: req.user.id,
+			name: req.user.name,
+			email: req.user.email
+		});
+	}
+);
 
 module.exports = router;
