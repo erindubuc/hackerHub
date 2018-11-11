@@ -7,14 +7,14 @@
     "react-dom": "^16.6.1",
     "react-scripts": "2.1.1"
   },
-  "scripts": {
+ "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http:/localhost:5000",
-  },
+  "proxy": "http://localhost:8081",
+
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -23,7 +23,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^4.0.1"
+  }
 }
-
-
