@@ -1,3 +1,7 @@
 /node_modules
+<<<<<<< HEAD
 package-lock.json
 keys.js
+=======
+package-lock.json
+>>>>>>> 484c1f94508c8483f5655412942a9e233435d3e1
