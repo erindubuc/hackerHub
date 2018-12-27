@@ -1,47 +1,56 @@
-const Validator = require("validator");
-const isEmpty = require("./is-empty");
+const Validator = require('validator');
+const isEmpty = require('./is-empty');
 
 module.exports = function validateRegisterInput(data) {
   let errors = {};
 
-  data.name = !isEmpty(data.name) ? data.name : "";
-  // if there is a name there, it equals data.name, or it is an empty string and will pass down to errors.name
-  data.email = !isEmpty(data.email) ? data.email : "";
-  data.password = !isEmpty(data.password) ? data.password : "";
-  data.password2 = !isEmpty(data.password2) ? data.password2 : "";
+  // in order to get an empty string for Validator
+  data.name = !isEmpty(data.name) ? data.name : '';
+  data.email = !isEmpty(data.email) ? data.email : '';
+  data.password = !isEmpty(data.password) ? data.password : '';
+  data.password2 = !isEmpty(data.password2) ? data.password2 : '';
 
-  //Check if name entered has enough characters
+  // if the name is not the required length
   if (!Validator.isLength(data.name, { min: 2, max: 30 })) {
-    errors.name = "Name must be between 2 and 30 characters";
+    errors.name = 'Name must be between 2 and 30 characters';
   }
-  // Check if name field is empty
+
+  // if the name field is empty
   if (Validator.isEmpty(data.name)) {
-    errors.name = "Name field is required";
+    errors.name = 'Name field is required';
   }
-  // If no email is entered
+
+  // if the email field is empty
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required";
+    errors.email = 'Email field is required';
   }
-  // Check if email is valid
+
+  // if email is not valid
   if (!Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid";
+    errors.email = 'Email is invalid';
   }
-  // Check if password field is empty
+
+  // if password field is empty
   if (Validator.isEmpty(data.password)) {
-    errors.password = "Password field is required";
+    errors.password = 'Password field is required';
   }
-  // Check that password has enough characters
+
+  // if password is not between 6 and 30 chars
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    errors.password = "Password must be at least 6 characters";
+    errors.password = 'Password must be at least 6 characters';
   }
-  // Check if password2 field is empty
+
+  // if password2 is empty
   if (Validator.isEmpty(data.password2)) {
-    errors.password2 = "Confirm Password field is required";
+    errors.password2 = 'Confirm Password field is required';
   }
-  // Check to see if password2 matches password
+
+  // to confirm that password2 matches password
   if (!Validator.equals(data.password, data.password2)) {
-    errors.password2 = "Passwords must match";
+    errors.password2 = 'Passwords must match';
   }
+
+
   return {
     errors,
     isValid: isEmpty(errors)
