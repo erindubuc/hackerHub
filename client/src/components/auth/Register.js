@@ -21,6 +21,12 @@ class Register extends Component {
     this.onChange = this.onChange.bind(this); //allows changes made to signup form to be seen(user input)
     this.onSubmit = this.onSubmit.bind(this);  //when user hits button - submits info
   }
+  // check to see if we are logged in or not
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+  }
 
   componentWillReceiveProps(nextProps) {
     // can test for certain properties

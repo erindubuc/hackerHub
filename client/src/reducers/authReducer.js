@@ -1,6 +1,6 @@
-// import isEmpty from '../validation/is-empty';
+import isEmpty from '../validation/is-empty';
 
-// import { SET_CURRENT_USER } from '../actions/types';
+import { SET_CURRENT_USER } from '../actions/types';
 
 
 const initialState = {
@@ -10,13 +10,14 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    //     case SET_CURRENT_USER:
-    //       return {
-    //take what is already in the state and add on to it
-    //         ...state,
-    //         isAuthenticated: !isEmpty(action.payload),
-    //         user: action.payload
-    //       };
+    case SET_CURRENT_USER:
+      return {
+        //take what is already in the state and add on to it
+        ...state,
+        // check to see if it is not empty
+        isAuthenticated: !isEmpty(action.payload),
+        user: action.payload
+      };
     default:
       return state;
   }

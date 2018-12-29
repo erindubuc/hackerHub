@@ -1,4 +1,5 @@
-import axios from 'axios';  // Prevents us from manually needing the token for login
+import axios from 'axios';
+// Prevents us from manually needing the token for login
 
 
 const setAuthToken = token => {

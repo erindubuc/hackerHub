@@ -17,12 +17,19 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  // check to see if we are logged in or not
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     // check to see if user is authenticated 
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push('/dashboard');
     }
-
+    // check for errors
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -43,7 +50,8 @@ class Login extends Component {
   }
 
   render() {
-    // brings errors in
+    // bring errors in as properties from reducer
+    // will recieve props maps back to state
     const { errors } = this.state;
 
     return (
@@ -65,7 +73,9 @@ class Login extends Component {
                     value={this.state.email}
                     onChange={this.onChange}
                   />
-                  {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+                  {errors.email && (
+                    <div className="invalid-feedback">{errors.email}</div>
+                  )}
                 </div>
                 <div className="form-group">
                   <input
@@ -78,7 +88,9 @@ class Login extends Component {
                     value={this.state.password}
                     onChange={this.onChange}
                   />
-                  {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+                  {errors.password && (
+                    <div className="invalid-feedback">{errors.password}</div>
+                  )}
                 </div>
                 <input
                   type="submit"
@@ -88,11 +100,10 @@ class Login extends Component {
           </div>
         </div>
       </div>
-
     );
   }
 }
-
+// actions are properties
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
@@ -105,3 +116,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { loginUser })(Login);
+// function we want to call from actions is loginUser

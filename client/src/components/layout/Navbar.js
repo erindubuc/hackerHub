@@ -11,14 +11,15 @@ class Navbar extends Component {
 	}
 
 	render() {
+		// pull out isAuth & user 
 		const { isAuthenticated, user } = this.props.auth;
 
-		//Create different links 
+		//Create 2 different links depending on if logged in
 		const authLinks = (
 			<ul className="navbar-nav ml-auto">
 				<li className="nav-item">
-					<Link
-						to="/register"
+					<a
+						href="#"
 						role="tab"
 						onClick={this.onLogOutClick.bind(this)}
 						className="nav-link"
@@ -28,9 +29,9 @@ class Navbar extends Component {
 							src={user.avatar}
 							alt={user.name}
 							style={{ width: '25px', marginRight: '5px' }}
-							title="You must have a Gravatar connected to your email to display an image" /> {' '}
+							title="You must have a Gravatar connected to your email to display an image" />
 						Logout
-					</Link>
+					</a>
 				</li>
 			</ul >
 		);
