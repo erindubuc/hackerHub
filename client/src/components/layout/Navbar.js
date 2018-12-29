@@ -17,8 +17,9 @@ class Navbar extends Component {
 		const authLinks = (
 			<ul className="navbar-nav ml-auto">
 				<li className="nav-item">
-					<a
-						href=""
+					<Link
+						to="/register"
+						role="tab"
 						onClick={this.onLogOutClick.bind(this)}
 						className="nav-link"
 					>
@@ -29,7 +30,7 @@ class Navbar extends Component {
 							style={{ width: '25px', marginRight: '5px' }}
 							title="You must have a Gravatar connected to your email to display an image" /> {' '}
 						Logout
-					</a>
+					</Link>
 				</li>
 			</ul >
 		);
@@ -37,12 +38,13 @@ class Navbar extends Component {
 		const guestLinks = (
 			<ul className="navbar-nav ml-auto" >
 				<li className="nav-item">
-					<Link className="nav-link" to="/register">
+					<Link className="nav-link" to="/register"
+						role="tab">
 						Sign Up
 		      </Link>
 				</li>
 				<li className="nav-item">
-					<Link className="nav-link" to="/login">
+					<Link className="nav-link" to="/login" role="tab">
 						Login
 		      </Link>
 				</li>
@@ -52,7 +54,7 @@ class Navbar extends Component {
 		return (
 			<nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4" >
 				<div className="container">
-					<Link className="navbar-brand" to="/">
+					<Link className="navbar-brand" to="/" role="tab">
 						DevConnector
 					</Link>
 					<button
@@ -67,7 +69,7 @@ class Navbar extends Component {
 					<div className="collapse navbar-collapse" id="mobile-nav">
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item">
-								<Link className="nav-link" to="/profiles">
+								<Link className="nav-link" to="/profiles" role="tab">
 									{' '}
 									Developers
 								</Link>

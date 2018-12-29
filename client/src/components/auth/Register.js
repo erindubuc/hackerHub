@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
-import Axios from 'axios';
+
 
 class Register extends Component {
   constructor() {
@@ -14,19 +14,26 @@ class Register extends Component {
       email: '',
       password: '',
       password2: '',
+      // object to be used with Redux
       errors: {}
     };
 
-    // this.onChange = this.onChange.bind(this); //allows changes made to signup form to be seen(user input)
+    this.onChange = this.onChange.bind(this); //allows changes made to signup form to be seen(user input)
     this.onSubmit = this.onSubmit.bind(this);  //when user hits button - submits info
   }
 
   componentWillReceiveProps(nextProps) {
+    // can test for certain properties
+    // if there is an errors prop
     if (nextProps.errors) {
+      // get errors from redux and put into props
+      // once new props are included, include errors
       this.setState({ errors: nextProps.errors });
     }
   }
-
+  // to change component state
+  // e = whatever field is being filled in
+  // set it to value from input
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
     //allows user to change state of value fields
@@ -42,16 +49,20 @@ class Register extends Component {
       password2: this.state.password2
     };
 
+    // so these can be used within the actions
     this.props.registerUser(newUser, this.props.history);
   }
 
   render() {
-
+    // brings errors in
     const { errors } = this.state;
+
+    const { user } = this.props.auth;
 
     return (
 
       <div className="register">
+        {user ? user.name : null}
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -61,14 +72,13 @@ class Register extends Component {
                 <div className="form-group">
                   <input
                     type="text"
-                    className={classnames('form-control form-control-lg', {
-                      'is-invalid': errors.name
-                    })}
-                    //className 'is-invalid' will only exist when errors.name is invalid
-                    //error when name isn't there
+                    className={classnames('form-control form-control-lg', { 'is-invalid': errors.name })}
+                    //className 'is-invalid' will only exist when errors.name exists (from Validator)
+                    //errors comes from the state...if no name = errors.name
                     placeholder="Name"
                     name="name"
                     value={this.state.name}
+                    // function to run when change is made
                     onChange={this.onChange}
                   />
                   {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
@@ -129,9 +139,10 @@ Register.propTypes = {
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 }
-
+// putting auth state inside of a property called auth so it can be accessed  
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  // auth comes from rootReducer 
   errors: state.errors
 });
 

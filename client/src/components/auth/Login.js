@@ -13,7 +13,7 @@ class Login extends Component {
       errors: {}
     };
 
-    // this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -43,7 +43,7 @@ class Login extends Component {
   }
 
   render() {
-
+    // brings errors in
     const { errors } = this.state;
 
     return (
