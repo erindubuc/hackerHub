@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -18,10 +17,8 @@ class Register extends Component {
       // object to be used with Redux
       errors: {}
     };
-
-    this.onChange = this.onChange.bind(this); //allows changes made to signup form to be seen(user input)
-    this.onSubmit = this.onSubmit.bind(this);  //when user hits button - submits info
   }
+
   // check to see if we are logged in or not
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
@@ -61,7 +58,7 @@ class Register extends Component {
   }
 
   render() {
-    // brings errors in
+    // bring errors in
     const { errors } = this.state;
 
     const { user } = this.props.auth;

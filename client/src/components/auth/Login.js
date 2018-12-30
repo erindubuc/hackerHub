@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
 import { loginUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
 
@@ -13,10 +12,11 @@ class Login extends Component {
       password: '',
       errors: {}
     };
-
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
+
+  //   this.onChange = this.onChange.bind(this);
+  //   this.onSubmit = this.onSubmit.bind(this);
+  // }
 
   // check to see if we are logged in or not
   componentDidMount() {
@@ -43,6 +43,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     };
+
     this.props.loginUser(userData);
   }
 
