@@ -36,9 +36,9 @@ router.post('/register', (req, res) => {
 			return res.status(400).json(errors);
 		} else {
 			const avatar = gravatar.url(req.body.email, {
-				s: '200' /*Size*/,
-				r: 'pg' /*Rating*/,
-				d: 'mm' /*Default*/
+				s: '200', // Size
+				r: 'pg', // Rating
+				d: 'mm' // Default
 			});
 
 			const newUser = new User({
@@ -78,6 +78,7 @@ router.post('/login', (req, res) => {
 
 	// Find user by email
 	User.findOne({ email }).then(user => {
+		// check for user
 		if (!user) {
 			errors.email = 'User not found';
 			return res.json(404).json(errors);

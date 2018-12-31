@@ -14,7 +14,6 @@ export default function (state = initialState, action) {
       return {
         //take what is already in the state and add on to it
         ...state,
-        // check to see if it is not empty
         isAuthenticated: !isEmpty(action.payload),
         user: action.payload
       };
