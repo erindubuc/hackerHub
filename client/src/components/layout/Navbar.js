@@ -20,23 +20,43 @@ class Navbar extends Component {
 		const authLinks = (
 			<ul className="navbar-nav ml-auto">
 				<li className="nav-item">
-					{/* <a */}
-					{/* // href="" */}
-					<button onClick={this.onLogoutClick.bind(this)} >Perform action</button>
-					{/* onClick={this.onLogoutClick.bind(this)}
+					<Link className="nav-link" to="/dashboard">
+						Dashboard
+		      </Link>
+				</li>
+				{/* <li className="nav-item">
+					<button onClick={this.onLogoutClick.bind(this)} ></button> */}
+				{/* HAD TO COMMENT THESE OUT B/C OF HREF ERR <a */}
+				{/* // href="" */}
+				{/* onClick={this.onLogoutClick.bind(this)}
 						// onClick={foo}
 						className="nav-link"
 					> */}
-					<img
+				<li className="nav-item">
+					<a
+						href="./login"
+						onClick={this.onLogoutClick.bind(this)}
+						className="nav-link"
+					>
+						<img
+							className="rounded-circle"
+							src={user.avatar}
+							alt={user.name}
+							style={{ width: '25px', marginRight: '5px' }}
+							title="You must have a Gravatar connected to your email to display an image"
+						/>{' '}
+						Logout
+          </a>
+					{/* <img
 						className="rounded-circle"
 						src={user.avatar}
 						alt={user.name}
 						style={{ width: '25px', marginRight: '5px' }}
 						title="You must have a Gravatar connected to your email to display an image" />
-					Logout
+					Logout */}
 					{/* </a> */}
 				</li>
-			</ul >
+			</ul>
 		);
 
 		const guestLinks = (
