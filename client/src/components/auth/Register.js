@@ -14,7 +14,6 @@ class Register extends Component {
       email: '',
       password: '',
       password2: '',
-      // object to be used with Redux
       errors: {}
     };
   }
@@ -25,10 +24,9 @@ class Register extends Component {
       this.props.history.push('/dashboard');
     }
   }
-
+  // can test for certain properties
+  // if there is an errors prop
   componentWillReceiveProps(nextProps) {
-    // can test for certain properties
-    // if there is an errors prop
     if (nextProps.errors) {
       // get errors from redux and put into props
       // once new props are included, include errors
@@ -38,12 +36,11 @@ class Register extends Component {
   // to change component state
   // e = whatever field is being filled in
   // set it to value from input
-  onChange = (e) => {
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-    //allows user to change state of value fields
   }
 
-  onSubmit(e) {
+  onSubmit = e => {
     e.preventDefault();
 
     const newUser = {
@@ -61,12 +58,9 @@ class Register extends Component {
     // bring errors in
     const { errors } = this.state;
 
-    const { user } = this.props.auth;
-
     return (
 
       <div className="register">
-        {user ? user.name : null}
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -119,9 +113,9 @@ Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
-}
+};
 // putting auth state inside of a property called auth so it can be accessed  
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   auth: state.auth,
   // auth comes from rootReducer 
   errors: state.errors

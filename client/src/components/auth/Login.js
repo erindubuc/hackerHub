@@ -14,10 +14,6 @@ class Login extends Component {
     };
   }
 
-  //   this.onChange = this.onChange.bind(this);
-  //   this.onSubmit = this.onSubmit.bind(this);
-  // }
-
   // check to see if we are logged in or not
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
@@ -36,7 +32,7 @@ class Login extends Component {
     }
   }
 
-  onSubmit(e) {
+  onSubmit = e => {
     e.preventDefault();
 
     const userData = {
@@ -47,7 +43,7 @@ class Login extends Component {
     this.props.loginUser(userData);
   }
 
-  onChange = (e) => {
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -62,7 +58,9 @@ class Login extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Log In</h1>
-              <p className="lead text-center">Sign in to your DevConnector account</p>
+              <p className="lead text-center">
+                Sign in to your DevConnector account
+              </p>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="Email Address"
@@ -100,7 +98,7 @@ Login.propTypes = {
   errors: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
