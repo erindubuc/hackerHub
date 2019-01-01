@@ -124,7 +124,7 @@ class AddExperience extends Component {
                     name="current"
                     value={this.state.current}
                     checked={this.state.current}
-                    onChange={this.state}
+                    onChange={this.onCheck}
                     id="current"
                   />
                   <label htmlFor="current" className="form-check-label">
