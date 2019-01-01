@@ -52,7 +52,6 @@ export const addExperience = (expData, history) => dispatch => {
     );
 };
 
-
 // Delete account and profile
 export const deleteAccount = () => dispatch => {
   if (window.confirm('Are you sure you want to delete your account? This can NOT be undone!')) {
