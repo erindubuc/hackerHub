@@ -55,7 +55,8 @@ class CreateProfile extends Component {
       linkedin: this.state.linkedin,
       youtube: this.state.youtube,
       instagram: this.state.instagram
-    }
+    };
+
     this.props.createProfile(profileData, this.props.history);
   }
 
@@ -84,9 +85,18 @@ class CreateProfile extends Component {
             placeholder="Facebook Page URL"
             name="facebook"
             icon="fab fa-facebook"
-            value={this.state.twitter}
+            value={this.state.facebook}
             onChange={this.onChange}
             error={errors.facebook}
+          />
+
+          <InputGroup
+            placeholder="Linkedin Profile URL"
+            name="linkedin"
+            icon="fab fa-linkedin"
+            value={this.state.linkedin}
+            onChange={this.onChange}
+            error={errors.linkedin}
           />
 
           <InputGroup
@@ -215,20 +225,25 @@ class CreateProfile extends Component {
                       this.setState(prevState => ({
                         // this will toggle the social inputs
                         displaySocialInputs: !prevState.displaySocialInputs
-                      }))
-                    }} className="btn btn-light">
+                      }));
+                    }}
+                    className="btn btn-light">
                     Add Social Network Links
                   </button>
                   <span className="text-muted">Optional</span>
                 </div>
                 {socialInputs}
-                <input type="submit" value="Submit" className="btn btn-info btn-block mt-4" />
+                <input
+                  type="submit"
+                  value="Submit"
+                  className="btn btn-info btn-block mt-4"
+                />
               </form>
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
