@@ -35,7 +35,7 @@ class PostForm extends Component {
 
     this.props.addPost(newPost);
     this.setState({ text: '' });
-  };
+  }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -60,7 +60,9 @@ class PostForm extends Component {
                   error={errors.text}
                 />
               </div>
-              <button type="submit" className="btn btn-dark">Submit</button>
+              <button type="submit" className="btn btn-dark">
+                Submit
+              </button>
             </form>
           </div>
         </div>
