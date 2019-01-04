@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Spinner from '../common/Spinner';
+import { getPost } from '../../actions/postActions';
 import PostItem from '../posts/PostItem';
 import CommentForm from './CommentForm';
 import CommentFeed from './CommentFeed';
-import Spinner from '../common/Spinner';
-import { getPost } from '../../actions/postActions';
 
 class Post extends Component {
   componentDidMount() {
@@ -48,7 +48,7 @@ class Post extends Component {
 
 Post.propTypes = {
   getPost: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
