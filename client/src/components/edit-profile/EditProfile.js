@@ -97,7 +97,7 @@ class CreateProfile extends Component {
       linkedin: this.state.linkedin,
       youtube: this.state.youtube,
       instagram: this.state.instagram
-    }
+    };
     this.props.createProfile(profileData, this.props.history);
   }
 
@@ -279,7 +279,7 @@ class CreateProfile extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

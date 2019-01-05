@@ -34,13 +34,13 @@ class Dashboard extends Component {
         // want username to be link
         dashboardContent = (
           <div>
-            <p className="lead text-muted">Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+            <p className="lead text-muted text-center">Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
             <ProfileActions />
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
             <div style={{ marginBottom: '60px' }} />
-            <button onClick={this.onDeleteClick.bind(this)} className="btn btn-danger">Delete My Account</button>
+            <button onClick={this.onDeleteClick.bind(this)} className="btn btn-outline-danger">Delete My Account</button>
           </div>
         );
       } else {
@@ -60,9 +60,9 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <div className="container">
-          <div className="row">
+          <div className="row text-center">
             <div className="col-md-12">
-              <h1 className="display-4">Dashboard</h1>
+              <h2 className="display-4">Dashboard</h2>
               {dashboardContent}
             </div>
           </div>
