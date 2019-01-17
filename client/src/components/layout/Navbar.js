@@ -29,17 +29,9 @@ class Navbar extends Component {
 						Dashboard
 		      </Link>
 				</li>
-				{/* <li className="nav-item">
-					<button onClick={this.onLogoutClick.bind(this)} ></button> */}
-				{/* HAD TO COMMENT THESE OUT B/C OF HREF ERR <a */}
-				{/* // href="" */}
-				{/* onClick={this.onLogoutClick.bind(this)}
-						// onClick={foo}
-						className="nav-link"
-					> */}
 				<li className="nav-item">
 					<a
-						href="./login"
+						href="/login"
 						onClick={this.onLogoutClick.bind(this)}
 						className="nav-link"
 					>
@@ -52,14 +44,6 @@ class Navbar extends Component {
 						/>{' '}
 						Logout
           </a>
-					{/* <img
-						className="rounded-circle"
-						src={user.avatar}
-						alt={user.name}
-						style={{ width: '25px', marginRight: '5px' }}
-						title="You must have a Gravatar connected to your email to display an image" />
-					Logout */}
-					{/* </a> */}
 				</li>
 			</ul>
 		);
@@ -67,13 +51,12 @@ class Navbar extends Component {
 		const guestLinks = (
 			<ul className="navbar-nav ml-auto" >
 				<li className="nav-item">
-					<Link className="nav-link" to="/register"
-						role="tab">
+					<Link className="nav-link" to="/register">
 						Sign Up
 		      </Link>
 				</li>
 				<li className="nav-item">
-					<Link className="nav-link" to="/login" role="tab">
+					<Link className="nav-link" to="/login">
 						Login
 		      </Link>
 				</li>
@@ -83,7 +66,7 @@ class Navbar extends Component {
 		return (
 			<nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4" >
 				<div className="container">
-					<Link className="navbar-brand" to="/" role="tab">
+					<Link className="navbar-brand" to="/">
 						hackerHub
 					</Link>
 					<button
@@ -98,7 +81,7 @@ class Navbar extends Component {
 					<div className="collapse navbar-collapse" id="mobile-nav">
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item">
-								<Link className="nav-link" to="/profiles" role="tab">
+								<Link className="nav-link" to="/profiles">
 									{' '}
 									Hackers
 								</Link>
